@@ -3,13 +3,25 @@
 import sys
 import re
 
+totalGreen = 13
+totalRed = 12
+totalBlue = 14
+
 def displayData(lst):
     print("------#Data#------")
     for i in lst:
         print(i)
     print("------END--------")
 
-def workEachLine(line):
+def workEachLine(line, gameNumber):
+    game = line.split(':')
+    txt = "Game is {0} the res is {1}".format(gameNumber, game[1])
+    print(txt)
+    resTab = game[1].split(';')
+    
+    for i in resTab:
+        print(i)
+    
     return line
 
 def readFile(av):
@@ -22,18 +34,11 @@ def readFile(av):
     #displayData(lst)
     #workOnList(lst)
     lstTab = []
+    gNb = 1
     for i in lst:
-        lstTab.append(workEachLine(i))
-    # print("ici")
-    dayOneRes = 0
-    for j in lstTab:
-        #print (j)
-        dayOneRes += int(j)
+        workEachLine(i, gNb)
+        gNb += 1
 
-    #print("res")
-    #print(lstTab)
-    print('le resultat final : ', end='' )
-    print(dayOneRes)
     fd.close()
     
 
